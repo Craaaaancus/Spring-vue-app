@@ -1,9 +1,9 @@
-import axios, {type AxiosInstance} from "axios";
+import axios, { type AxiosInstance } from 'axios'
 
 const apiClient: AxiosInstance = axios.create({
   baseURL: 'http://localhost:8080/game',
   headers: {
-    "Content-type": "application/json",
+    'Content-type': 'application/json'
   },
 })
 

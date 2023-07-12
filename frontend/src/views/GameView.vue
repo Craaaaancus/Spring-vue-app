@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import GameCard from '@/components/GameCard.vue';
-import type IGame from '@/types/IGame';
-import { useNotification, type NotificationType } from 'naive-ui';
-import { onMounted, onUpdated, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import axios, { AxiosError } from 'axios';
+import GameCard from '@/components/GameCard.vue'
+import type IGame from '@/types/IGame'
+import { useNotification, type NotificationType } from 'naive-ui'
+import { onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import axios, { AxiosError } from 'axios'
 
 const route = useRoute()
 let queryGame = ref({} as IGame)
-const url = `http://localhost:8080/game/${route.params.id}`
+const notFoundStatus = 404
 
 const notification = useNotification()
 const notify = (type: NotificationType) => {
@@ -24,14 +24,13 @@ const getGame = async (id: any) => {
     const responce = await axios.get(id)
     queryGame.value = responce.data
     console.log(responce.data)
-  }
-  catch(e) {
-    if (e instanceof AxiosError){
-      if (e.response?.status === 404){
+  } catch (e) {
+    if (e instanceof AxiosError) {
+      if (e.response?.status === notFoundStatus) {
         queryGame.value = {
           id: 0,
           title: '404',
-          description: 'Не найдено'
+          description: e.response.statusText
         }
         notify('error')
       }

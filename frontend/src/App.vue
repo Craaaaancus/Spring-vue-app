@@ -17,12 +17,11 @@ import GameButton from './components/GameButton.vue'
   <n-notification-provider>
     <RouterView />
   </n-notification-provider>
-
 </template>
 
 <style scoped>
-  .nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 </style>

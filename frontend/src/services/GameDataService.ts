@@ -1,5 +1,5 @@
-import http from "@/http-common";
-import type { AxiosResponse } from "axios";
+import http from '@/http-common'
+import type { AxiosResponse } from 'axios'
 
 class GameDataService {
   get(id: any): Promise<AxiosResponse<any>> {
@@ -7,4 +7,4 @@ class GameDataService {
   }
 }
 
-export default new GameDataService();
+export default new GameDataService()
