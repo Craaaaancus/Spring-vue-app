@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import GameButton from './components/GameButton.vue'
+import { NNotificationProvider } from 'naive-ui'
 </script>
 
 <template>
@@ -14,9 +15,9 @@ import GameButton from './components/GameButton.vue'
     </div>
   </header>
 
-  <n-notification-provider>
+  <NNotificationProvider>
     <RouterView />
-  </n-notification-provider>
+  </NNotificationProvider>
 </template>
 
 <style scoped>

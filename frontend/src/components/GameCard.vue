@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import type IGame from '@/types/IGame'
 import { type PropType } from 'vue'
+import { NCard } from 'naive-ui'
 defineProps({
   game: Object as PropType<IGame>
 })
 </script>
 
 <template>
-  <n-card :title="game?.title" :key="game?.id">{{ game?.description }}</n-card>
+  <NCard :title="game ? game.title : ''">{{ game?.description }}</NCard>
 </template>
 
 <style scoped>

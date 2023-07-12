@@ -4,7 +4,7 @@ const apiClient: AxiosInstance = axios.create({
   baseURL: 'http://localhost:8080/game',
   headers: {
     'Content-type': 'application/json'
-  },
+  }
 })
 
 export default apiClient

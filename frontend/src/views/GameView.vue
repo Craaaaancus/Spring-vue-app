@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import GameCard from '@/components/GameCard.vue'
-import type IGame from '@/types/IGame'
 import { useNotification, type NotificationType } from 'naive-ui'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
+import http from '@/services/GameDataService'
 
 const route = useRoute()
-let queryGame = ref({} as IGame)
+let queryGame = ref({
+  id: 0,
+  title: '',
+  description: ''
+})
 const notFoundStatus = 404
 
 const notification = useNotification()
@@ -21,7 +25,7 @@ const notify = (type: NotificationType) => {
 }
 const getGame = async (id: any) => {
   try {
-    const responce = await axios.get(id)
+    const responce = await http.get(id)
     queryGame.value = responce.data
     console.log(responce.data)
   } catch (e) {
