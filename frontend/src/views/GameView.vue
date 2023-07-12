@@ -34,12 +34,12 @@ const getGame = async (id: any) => {
         queryGame.value = {
           id: 0,
           title: '404',
-          description: e.response.statusText
+          description: 'Not found'
         }
         notify('error')
       }
+      console.log(e)
     }
-    console.log(e)
   }
 }
 
